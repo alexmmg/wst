@@ -20,7 +20,6 @@ const Header = () => {
 
     return (
         <div className="header">
-            <Card>
                 <Card.Header className="m-0">
                     <Row className="justify-content-between">
                         <Col xs={2}>
@@ -33,7 +32,6 @@ const Header = () => {
                         </Col>
                     </Row>
                 </Card.Header>
-            </Card>
         </div>
     )
 };
