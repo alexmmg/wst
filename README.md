@@ -1,2 +1,1 @@
-# wst
-test task for Nikolay
+Test task for Nikolay
