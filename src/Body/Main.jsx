@@ -1,11 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../Header/Header";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import mainImg from "../assets/img/body/bodyImg.jpg";
+import FileInput from "../FileUpload/FileUpload";
+import UploadForm from "../FileUploadNew";
+import SimpleReactFileUpload from "../FileUploadNew";
+import Modal from "../Modal/Modal";
+import {render} from "react-dom";
 
 const Main = () => {
+
+    const [modalState, setModalState] = useState(false);
+
+    const toggleModalState = () => {
+        setModalState(!modalState)
+    };
 
     return (
         <Container>
@@ -42,10 +53,19 @@ const Main = () => {
             <Row className="justify-content-center">
                 <Col xs={3}>
                     <div>
-                        <button className="btn btn-secondary my-2">SEND FILE</button>
+                        <button className="btn btn-secondary my-2" onClick={() => toggleModalState()}>SEND FILE</button>
                     </div>
                 </Col>
             </Row>
+            <Row className="justify-content-center">
+                <Col>
+                    <div>
+                        <SimpleReactFileUpload />
+
+                    </div>
+                </Col>
+            </Row>
+
         </Container>
     )
 };
