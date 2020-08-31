@@ -1,11 +1,14 @@
-import React from "react";
-import Header from "../Header/Header";
+import React, {useState} from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import mainImg from "../assets/img/body/bodyImg.jpg";
+import FileUpload from "../FileUpload/FileUpload";
+import Modal from 'react-modal'
 
 const Main = () => {
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     return (
         <Container>
@@ -42,8 +45,22 @@ const Main = () => {
             <Row className="justify-content-center">
                 <Col xs={3}>
                     <div>
-                        <button className="btn btn-secondary my-2">SEND FILE</button>
+                        <button className="btn btn-secondary my-2" onClick={() => setModalIsOpen(true)}>SEND FILE
+                        </button>
                     </div>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+                <Col>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={() => setModalIsOpen(false)}
+                        style={{overlay: {backgroundColor: 'grey'}, content: {color: 'darkblue'}}}>
+                        <FileUpload />
+                        <div>
+                            <button onClick={() => setModalIsOpen(false)}>Close</button>
+                        </div>
+                    </Modal>
                 </Col>
             </Row>
         </Container>
