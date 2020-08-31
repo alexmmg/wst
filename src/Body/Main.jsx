@@ -1,22 +1,14 @@
 import React, {useState} from "react";
-import Header from "../Header/Header";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import mainImg from "../assets/img/body/bodyImg.jpg";
-import FileInput from "../FileUpload/FileUpload";
-import UploadForm from "../FileUploadNew";
-import SimpleReactFileUpload from "../FileUploadNew";
-import Modal from "../Modal/Modal";
-import {render} from "react-dom";
+import FileUpload from "../FileUpload/FileUpload";
+import Modal from 'react-modal'
 
 const Main = () => {
 
-    const [modalState, setModalState] = useState(false);
-
-    const toggleModalState = () => {
-        setModalState(!modalState)
-    };
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     return (
         <Container>
@@ -53,19 +45,24 @@ const Main = () => {
             <Row className="justify-content-center">
                 <Col xs={3}>
                     <div>
-                        <button className="btn btn-secondary my-2" onClick={() => toggleModalState()}>SEND FILE</button>
+                        <button className="btn btn-secondary my-2" onClick={() => setModalIsOpen(true)}>SEND FILE
+                        </button>
                     </div>
                 </Col>
             </Row>
             <Row className="justify-content-center">
                 <Col>
-                    <div>
-                        <SimpleReactFileUpload />
-
-                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onRequestClose={() => setModalIsOpen(false)}
+                        style={{overlay: {backgroundColor: 'grey'}, content: {color: 'darkblue'}}}>
+                        <FileUpload />
+                        <div>
+                            <button onClick={() => setModalIsOpen(false)}>Close</button>
+                        </div>
+                    </Modal>
                 </Col>
             </Row>
-
         </Container>
     )
 };

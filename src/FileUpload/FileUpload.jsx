@@ -1,25 +1,66 @@
-import React from "react";
+import React from 'react'
+import * as axios from "axios";
+import remove from "../assets/img/body/remove.png"
 
-const noop = () => {};
+class FileUpload extends React.Component {
 
-const FileInput = ({ value, onChange = noop, ...rest }) => (
-    <div>
-        {Boolean(value.length) && (
-            <div>Selected files: {value.map(f => f.name).join(", ")}</div>
-        )}
-        <label>
-            Click to select some files...
-            <input
-                {...rest}
-                style={{ display: "none" }}
-                type="file"
-                onChange={e => {
-                    onChange([...e.target.files]);
-                }}
-                multiple
-            />
-        </label>
-    </div>
-);
+    constructor(props) {
+        debugger
+        super(props);
+        this.state = {
+            files: []
+        };
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.deleteFile = this.deleteFile.bind(this);
+    }
 
-export default FileInput;
+    onFormSubmit(e) {
+        e.preventDefault();
+        this.fileUpload(this.state.files).then((response) => {
+            console.log(response.data);
+        })
+    }
+
+    onChange(e) {
+        this.setState({files: [...this.state.files, ...e.target.files]});
+    }
+
+    deleteFile(e) {
+        debugger
+        this.setState({files: this.state.files.filter(file => file.name !== e._targetInst.return.key)});
+    }
+
+    fileUpload(file) {
+        const url = 'http://website.com/file-upload';
+        const formData = new FormData();
+        formData.append('file', file);
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+        return axios.post(url, formData, config)
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.onFormSubmit}>
+                <h1>File Upload</h1>
+                <input type="file" name="files" onChange={this.onChange} multiple/>
+                <div>
+                    {this.state.files &&
+                    this.state.files.map(f =>
+                        <div key={f.name}>
+                            {f.name} <span key={f.name}><img onClick={this.deleteFile} className="removeImg"
+                                                             src={remove} alt="Remove file"/></span>
+                        </div>)
+                    }
+                </div>
+                <button type="submit" disabled={this.state.files.length === 0}>Upload</button>
+            </form>
+        )
+    }
+}
+
+export default FileUpload;

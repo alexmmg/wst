@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Main from "./Body/Main";
+import Sidebar from "./Body/Sidebar";
 
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
             <Header/>
             <Row className="m-0 h-90">
                 <Col xs={3}>
-                    Sidebar
+                    <Sidebar />
                 </Col>
                 <Col>
                     <Main />
