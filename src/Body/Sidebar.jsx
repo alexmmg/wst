@@ -4,7 +4,7 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar mt-2">
-            <ul>
+            <ul>Sources:
                 <li>https://react-bootstrap.github.io
                 </li>
                 <li>https://getbootstrap.com

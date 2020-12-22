@@ -54,7 +54,12 @@ const Main = () => {
                     <Modal
                         isOpen={modalIsOpen}
                         onRequestClose={() => setModalIsOpen(false)}
-                        style={{overlay: {backgroundColor: 'grey'}, content: {color: 'darkblue'}}}>
+                        ariaHideApp={false}
+                        style={{overlay: {backgroundColor: 'grey'}, content: {color: 'darkblue', width: '50vw',
+                                top: '100px',
+                                left: '100px',
+                                right: '100px',
+                                bottom: '100px',}}}>
                         <FileUpload />
                         <div>
                             <button className="mt-3 btn btn-outline-danger" onClick={() => setModalIsOpen(false)}>Close</button>

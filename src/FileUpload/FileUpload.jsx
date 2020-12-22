@@ -36,7 +36,6 @@ class FileUpload extends React.Component {
 
     fileUpload(file) {
         const url = 'https://jsonplaceholder.typicode.com/posts';
-        // const url = 'http://website.com/file-upload';
         const formData = new FormData();
         formData.append('file', file);
         const config = {
