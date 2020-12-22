@@ -25,9 +25,11 @@ const Header = () => {
                         <Col xs={2}>
                             <img src={mainLogo} alt="Main Logo" className="mainLogo"/>
                         </Col>
-                        <Col xs={1} className="d-flex">
+                        <Col xs={3} className="d-flex justify-content-end">
                             <div className="align-self-center">
-                                <button className="btn btn-primary my-2" onClick={showInConsole}>PUSH</button>
+                                <button className="btn btn-primary my-2" data-toggle="tooltip" data-placement="right"
+                                        title="Prints сhess board to consol"
+                                        onClick={showInConsole}>PUSH</button>
                             </div>
                         </Col>
                     </Row>

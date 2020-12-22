@@ -14,7 +14,7 @@ const Main = () => {
         <Container>
             <Row className="mt-2">
                 <Col xs={4}>
-                    <img className="img-fluid" src={mainImg}/>
+                    <img className="img-fluid" alt="Seashore" src={mainImg}/>
                 </Col>
                 <Col xs={8}>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet aut autem beatae culpa,
@@ -42,11 +42,10 @@ const Main = () => {
                     </p>
                 </Col>
             </Row>
-            <Row className="justify-content-center">
-                <Col xs={3}>
+            <Row className="justify-content-center ">
+                <Col xs={4}>
                     <div>
-                        <button className="btn btn-secondary my-2" onClick={() => setModalIsOpen(true)}>SEND FILE
-                        </button>
+                        <button className="btn btn-secondary my-2 mb-4" onClick={() => setModalIsOpen(true)}>SEND FILE</button>
                     </div>
                 </Col>
             </Row>
@@ -58,7 +57,7 @@ const Main = () => {
                         style={{overlay: {backgroundColor: 'grey'}, content: {color: 'darkblue'}}}>
                         <FileUpload />
                         <div>
-                            <button onClick={() => setModalIsOpen(false)}>Close</button>
+                            <button className="mt-3 btn btn-outline-danger" onClick={() => setModalIsOpen(false)}>Close</button>
                         </div>
                     </Modal>
                 </Col>

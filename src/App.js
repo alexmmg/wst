@@ -19,11 +19,11 @@ const App = () => {
                 <Col xs={3}>
                     <Sidebar />
                 </Col>
-                <Col>
+                <Col xs={9}>
                     <Main />
                 </Col>
             </Row>
-                <Card.Footer className="fixed-bottom">
+                <Card.Footer className="fixed-bottom-md">
                     <Footer />
                 </Card.Footer>
         </Container>

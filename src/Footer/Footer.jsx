@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="footer">
             <footer className="font-small">
                 <div className="text-center">© 2020 Copyright:
-                    <a href="https://website.com/"> website.com</a>
+                    <a className="ml-2" href="https://website.com/">website.com</a>
                 </div>
             </footer>
         </div>

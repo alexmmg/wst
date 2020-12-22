@@ -5,7 +5,6 @@ import remove from "../assets/img/body/remove.png"
 class FileUpload extends React.Component {
 
     constructor(props) {
-        debugger
         super(props);
         this.state = {
             files: []
@@ -20,6 +19,7 @@ class FileUpload extends React.Component {
         this.fileUpload(this.state.files).then((response) => {
             console.log(response.data);
         })
+        this.clearFileList()
     }
 
     onChange(e) {
@@ -27,12 +27,16 @@ class FileUpload extends React.Component {
     }
 
     deleteFile(e) {
-        debugger
         this.setState({files: this.state.files.filter(file => file.name !== e._targetInst.return.key)});
     }
 
+    clearFileList() {
+        this.setState({files: []});
+    }
+
     fileUpload(file) {
-        const url = 'http://website.com/file-upload';
+        const url = 'https://jsonplaceholder.typicode.com/posts';
+        // const url = 'http://website.com/file-upload';
         const formData = new FormData();
         formData.append('file', file);
         const config = {
@@ -48,7 +52,7 @@ class FileUpload extends React.Component {
             <form onSubmit={this.onFormSubmit}>
                 <h1>File Upload</h1>
                 <input type="file" name="files" onChange={this.onChange} multiple/>
-                <div>
+                <div className="mt-4">
                     {this.state.files &&
                     this.state.files.map(f =>
                         <div key={f.name}>
@@ -57,7 +61,10 @@ class FileUpload extends React.Component {
                         </div>)
                     }
                 </div>
-                <button type="submit" disabled={this.state.files.length === 0}>Upload</button>
+                <button className="btn btn-outline-success mt-4 mb-4 mr-3" type="submit"
+                        disabled={this.state.files.length === 0}>Upload
+                </button>
+                <span className="alert-danger">{this.state.files.length === 0 ? "Choose file(s)" : ""}</span>
             </form>
         )
     }
